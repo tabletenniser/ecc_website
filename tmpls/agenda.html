@@ -1,0 +1,90 @@
+<% var display_num = 3;
+
+	var complete_events= _.filter(events, function(event){ return (event.complete===true) });
+   var upcoming_events = _.filter(events, function(event) { return (event.complete==null || event.complete===false) });
+   var complete_events_show = complete_events.slice(0,display_num);
+   var upcoming_events_show = upcoming_events.slice(0,display_num);
+   var complete_events_hide = complete_events.slice(display_num);
+   var upcoming_events_hide = upcoming_events.slice(display_num);
+%>
+
+<% if(upcoming_events.length>0){ %>
+	<h2>Up Coming Events</h2>
+	<ul class="ecc-agenda-list container-fluid" data-num="<%=display_num%>">
+		<% _.each(upcoming_events_show , function(event){ %>
+			<li><div class="ecc-agenda-item" href="<%=event.url%>">
+				<div class="col-sm-2">
+					<div class="ecc-agenda-date-circle"><%=event.day+"<br>"+event.month+"<br>"+event.year%></div>
+				</div>
+				<div class="col-sm-10">
+					<a href="http://ecc.skule.ca/events.php?id=<%=event.id%>" ><h3><%=event.title%></h3></a>
+					<h4><%="start: "+event.startTime+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"end: "+event.endTime%></h4>
+					<h4><%="location:" +event.location%></h4>
+					<p><%=event.short_summary%></p>
+				</div>
+				
+				
+			
+			</div></li>
+		<%});                               %>
+		
+			<% _.each(upcoming_events_hide , function(event){ %>
+			<li style="display:none;"><div class="ecc-agenda-item" href="<%=event.url%>">
+				<div class="col-sm-2">
+					<div class="ecc-agenda-date-circle"><%=event.day+"<br>"+event.month+"<br>"+event.year%></div>
+				</div>
+				<div class="col-sm-10">
+					<a href="http://ecc.skule.ca/events.php?id=<%=event.id%>" ><h3><%=event.title%></h3></a>
+					<h4><%="start: "+event.startTime+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"end: "+event.endTime%></h4>
+					<h4><%="location:" +event.location%></h4>
+					<p><%=event.short_summary%></p>
+				</div>
+				
+				
+			
+			</div></li>
+		<%});                               %>
+	
+	</ul>
+	<a class=""></a>
+<%}%>
+
+<% if(complete_events.length>0){ %>
+	
+	<h2>Finished Events</h2>
+	<ul class="ecc-agenda-list container-fluid">
+		<% _.each(complete_events_show, function(event){ %>
+			<li><div class="ecc-agenda-item" href="<%=event.url%>">
+				<div class="col-sm-2">
+					<div class="ecc-agenda-date-circle"><%=event.day+"<br>"+event.month+"<br>"+event.year%></div>
+				</div>
+				<div class="col-sm-10">
+					<a href="http://ecc.skule.ca/events.php?id=<%=event.id%>" ><h3><%=event.title%></h3></a>
+					<h4><%="start: "+event.startTime+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"end: "+event.endTime%></h4>
+					<h4><%="location:" +event.location%></h4>
+					<p><%=event.short_summary%></p>
+				</div>
+				
+				
+			
+			</div></li>
+		<%});                               %>
+			<% _.each(complete_events_hide, function(event){ %>
+			<li><div class="ecc-agenda-item" href="<%=event.url%>">
+				<div class="col-sm-2">
+					<div class="ecc-agenda-date-circle"><%=event.day+"<br>"+event.month+"<br>"+event.year%></div>
+				</div>
+				<div class="col-sm-10">
+					<a href="http://ecc.skule.ca/events.php?id=<%=event.id%>" ><h3><%=event.title%></h3></a>
+					<h4><%="start: "+event.startTime+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"end: "+event.endTime%></h4>
+					<h4><%="location:" +event.location%></h4>
+					<p><%=event.short_summary%></p>
+				</div>
+				
+				
+			
+			</div></li>
+		<%});                               %>
+	
+	</ul>
+<%}%>

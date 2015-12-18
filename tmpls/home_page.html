@@ -1,0 +1,118 @@
+	<%
+	
+		
+		var first = false;
+		function set_first(){
+			first = true;
+		}
+		function set_first_active(){
+			var str = ((first) ? "active" : "");
+			first = false;
+			return str;
+		}
+			
+	
+	
+	%>
+ 
+ 
+ <div class="banner-light" style="padding:0px 0px">
+      <div class="content-panel-full-width">
+      		<img class="banner-pic" src="images/home/home_page_banner.jpg"></img>
+      		<div style="position:absolute;width:100%;top:200px;">
+      			<div class="play-btn" onClick="
+      				$('.ecc-video').modal();
+      			"></div>
+      		</div>
+          <!--  <div class="col-sm-6">
+               
+            	<img class="banner-pic" src="images/home/ecc_orientation.jpg"></img>
+            	<!--<iframe width="853" height="480" src="//www.youtube.com/embed/BBMyBdcl1QQ" frameborder="0" allowfullscreen></iframe>
+                -->
+               
+           <!--   </div>
+            <div class="col-sm-6">
+              <!--  <h1 style="font-size:75px; line-height:150px">你的旅程</h1>
+                <h1 style="font-size:75px;line-height:150px;margin-left:2em">从这里开始</h1>
+                <span style="font-size:25px;line-height:150px;margin-left:320px">看看我们想对大家说的话<span class="right-arrow">&#10140;</span></span>
+                -->
+         <!--     </div>  -->
+    </div>
+</div>
+     
+<div class="banner-light">
+  
+				<div id="carousel-example-generic" class="carousel slide home-page-event-carousel center" data-ride="carousel" >
+				      <ol class="carousel-indicators">
+				      	  <% set_first();
+				      	      var index = 0;
+					       	  _.each(events,function(event){
+					                 if (event.front_page){
+					                 index ++;
+					    
+					   %>
+					       
+				        	<li data-target="#carousel-example-generic" data-slide-to="<%=index%>" class="<%=set_first_active()%> "></li>
+				        <%}});
+					%>
+				        
+				      </ol>
+				      <div class="carousel-inner">
+				 
+					       <% set_first();
+					   
+					       	  _.each(events,function(event){
+					       	  if (event.front_page){
+					       %>
+						
+							<div class="item  <%=set_first_active()%> ">
+								<div class="content-panel">
+									 <div class="col-sm-6">
+										<h2><%=event.title_two%></h2>
+										 <span class="home-page-event-title-divider"></span>
+										 <h1><%=event.title_art%></h1>
+										 <span class="home-page-event-title-divider"></span>
+										 <h2><%=""+event.month+" . "+event.day+" . "+event.year%></h2>
+					       			</div>
+					       			 <div class="col-sm-6">
+					       			 	<img  data-src="" alt="" src="<%="images/events/"+event.front_page.pic%>" class="main-pic"  ></img>
+					       			 </div>
+					       			
+					       		</div>		 
+				       		</div>
+						<%}});
+							
+						%>
+				      </div>
+				      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				        <span class="glyphicon glyphicon-chevron-left"></span>
+				      </a>
+				      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				        <span class="glyphicon glyphicon-chevron-right"></span>
+				      </a>
+				  </div>
+	
+				
+			
+</div>
+<div class="banner-dark">
+	<div class="content-panel">
+	 <div class="col-sm-6">
+	<img class="center" src = "images/icons/food-background.png"></img>
+		</div>
+		 <div class="col-sm-6">
+		 	<h1>Lunch Sale</h1>
+		 	 <span class="home-page-event-title-divider"></span>
+		 	<h2>Every Monday and Thursday</h2>
+		 	<a href="lunch_sale.php"><h2 style="font-size:2em;font-weight:normal">Reserve Your Order Now&#160;&#160;<span>&#10140;</span></h2></a>
+		 </div>
+	</div>
+</div>	
+<div class="banner-light">
+	<div class="content-panel" style="text-align:center">
+	     <h1>ECC Student Handbook</h1>
+	     <h2>ECC 学生手册</h2>
+	     <a href="" class="ecc-hero-action-btn" style="margin-top:20px;">download here</a>
+		
+	</div>
+</div>	

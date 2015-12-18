@@ -1,0 +1,116 @@
+<div class="container-fluid">
+	<%
+		var colors_map=["banner-light","banner-dark"	];
+		var color =0;
+		var num_of_colors = colors_map.length;
+		var next_section_color = function(){
+			color = (color+1)% num_of_colors ;
+		}
+		var get_color_section_class = function(){
+			return colors_map[color];
+		}
+		
+		var first = false;
+		function set_first(){
+			first = true;
+		}
+		function set_first_active(){
+			var str = ((first) ? "active" : "");
+			first = false;
+			return str;
+		}
+	
+	
+	%>
+
+
+	<% if (event.pic_hero){ %>
+		<div class="banner-light" style=" background-image: url(<%="/images/events/"+event.pic_hero %>);background-size: cover;">
+			<div class="content-panel">
+			
+				<div class="col-sm-8" style="color:#fff">
+					<div class="ecc-agenda-date-circle"><%=event.day+"<br>"+event.month+"<br>"+event.year%>	</div>
+				
+				
+					<h3><%=event.title%></h3>
+					<h4><%="start: "+event.startTime+"        "+"end: "+event.endTime%></h4>
+					<h4><%="location:" +event.location%></h4>
+					<p><%=event.desc%></p>
+			
+				</div>
+				
+				<!--<div class="col-sm-6">
+					<img class="ecc-hero-pic" src="<%="/images/events/"+event.pic_hero %>">
+				</div> --->
+				
+		
+			</div>
+		
+			
+		
+		</div>
+	<% }
+	   if(event.actions){
+	
+	%>
+		<div class="<%=get_color_section_class()%>">
+			<div class="content-panel">
+			 <ul class="ecc-hero-btn-list hero-btn-list-<%=Object.keys(event.actions).length%>">
+				<%_.each(event.actions,function(link,action){%>
+					<li><a href="<%=link%>"class="ecc-hero-action-btn"><%=action%></a></li>
+				
+				<%});%>
+			</ul>
+			</div>
+			
+		</div>
+	<% }
+	   next_section_color();
+	   if(event.pics){
+	
+	%>
+	
+		<div class="<%=get_color_section_class()%>">
+			<div class="content-panel">
+				<div id="carousel-example-generic" class="carousel slide ecc-event-pic-carousel center" data-ride="carousel" >
+				      <ol class="carousel-indicators">
+				      	  <% set_first();
+					       	  _.each(event.pics,function(pic,index){
+					   %>
+				        	<li data-target="#carousel-example-generic" data-slide-to="<%=index%>" class="<%=set_first_active()%> "></li>
+				        <%});
+					%>
+				        
+				      </ol>
+				      <div class="carousel-inner">
+				 
+					       <% set_first();
+					       	  _.each(event.pics,function(pic){
+					       %>
+						
+							<div class="item  <%=set_first_active()%> ">
+								<img  data-src="" alt="" src="<%="/images/events/"+pic%>" class="ecc-pic-carousel-size" ></img>
+				       			 </div>
+						<%});
+							
+						%>
+				      </div>
+				      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				        <span class="glyphicon glyphicon-chevron-left"></span>
+				      </a>
+				      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				        <span class="glyphicon glyphicon-chevron-right"></span>
+				      </a>
+				  </div>
+				
+				
+				
+			</div>
+			
+		</div>
+	<% }
+	  
+	
+	%>
+	
+</div>

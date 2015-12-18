@@ -1,0 +1,36 @@
+TODO LIST:
+- header & header picture in mobile device AARON
+- event detail page: show pictures at the bottom (3 columns on computer, 1 column on cell phone), calendar at right side RUSS
+- past_events.php RUSS
+	-in a separate page: require to add DONE & YEAR fields
+	-dropdown under events button
+- index.php: AARON
+	-render latest three events
+	-add some description for lunch sale & textbook sale
+- textbook.php:  AARON
+	-exec login for a list of events to see
+	-right side header not display correctly
+	-top menu on top
+	-add cell phone: DONE
+	-input validation: 9-10 digit student number, send email validation, only order lunch for the 		next five days
+	-create cookie so that the user does not need to re-enter
+	-information key points: price, place, time, date (Tues & Thurs)
+	-menu picture/with alternative text & top 
+	-DESIGN: FOUR SQUARE BOXES OF MENUS ON TOP + DES + NUMBER OF ORDERS + DATE ONLY TUES&THURS + TWO-COLUMN input text sales
+- sponsors.php: 
+	-add a new type called "sponsors": 
+	-change to grid view
+	-add key sponsors to main page
+	-put food & drink section to bottom	
+
+
+
+DONE LIST:
+
+
+
+
+Things to ask Anlan:
+-get one more fresh man or second year for potential web master for next year
+-lunch menu & price & picture
+-brief introduction for all events for next year
